@@ -1,0 +1,19 @@
+I want a small, console-based application written in Python 3 that lets the user order coffee beverages from a text menu, place their selections in a cart, review what is currently there, 
+remove anything they change their mind about, see the running total (calculated strictly on item prices, no tax or discount logic), and then confirm checkout.
+
+The code has to be fully object-oriented: separate classes for menu items, the cart, and the overall shop or controller. 
+Keep each class in its own module so the structure stays clean and easy to extend. 
+While the focus is on coffee drinks only for now, the menu must be loaded dynamically so new items could be added later without touching core logic.
+
+Error handling is important—invalid inputs, empty cart checkouts, 
+and similar edge cases should never crash the program but guide the user back to the correct flow. 
+All user interaction happens in the CLI; no GUI or web framework is needed.
+
+Deliverables:
+• Complete, well-commented source code (Python 3)
+• A concise README explaining class layout, how to run the script, and where a future tax or discount method could plug in
+• Sample menu file or in-code structure with at least three coffee drinks
+• Screenshot or short text transcript that shows a full order cycle from start to checkout
+
+I will consider the project finished when the script runs from the command line, passes simple manual tests for add / remove / view functions, 
+prints the correct total without tax, and exits gracefully after checkout confirmation.
