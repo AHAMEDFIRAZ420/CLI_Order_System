@@ -34,7 +34,9 @@ def menu_management_flow():
 """Write your main logic execution within this function cart_management_flow()"""
 
 def cart_management_flow():
-    pass
+    cart=CartManager
+    while:
+    
 
 def main():
     while True:

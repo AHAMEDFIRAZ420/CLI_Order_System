@@ -14,5 +14,9 @@
     "4": {
         "name": "Masala Tea",
         "price": 15.0
+    },
+    "5": {
+        "name": "tea",
+        "price": 10.0
     }
 }
