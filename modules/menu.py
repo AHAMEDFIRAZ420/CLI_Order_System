@@ -13,8 +13,11 @@ class MenuItemManager:
         # Loads menu from JSON
         if not os.path.exists(self.filepath):
             return {}
-        with open(self.filepath, 'r') as f:
-            return json.load(f)
+        try:
+            with open(self.filepath, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            return {}
 
     def save_menu(self):
         # Persists the current menu_data to the JSON file.
