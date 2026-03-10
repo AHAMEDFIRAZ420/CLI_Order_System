@@ -1,5 +1,9 @@
 from modules.menu import MenuItemManager
 from modules.cart import CartManager
+import os 
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu_management_flow():
     manager = MenuItemManager()
@@ -37,10 +41,10 @@ def cart_management_flow():
     menu = menu_mgr.menu_data
 
     while True:
-        menu_mgr.list_items() # Shows dynamic menu 
-        
+        clear_screen()
         print("\n" + "="*44 + f"\n{'BILLING TERMINAL':^44}" + "\n" + "="*44)
 
+        menu_mgr.list_items() # Shows dynamic menu 
         cart.display_cart()
 
         print("\nOptions: [ID Qty] to Add/Update | [ID]r to Remove | 'D' for Done | 'C' to Cancel")
@@ -56,7 +60,8 @@ def cart_management_flow():
                 print("\n[!] Cannot checkout an empty cart.")
                 continue
             
-            # Final Invoice display before exiting loop 
+            # Final Invoice display before exiting loop
+            clear_screen()
             print("\n" + "="*44 + f"\n{'FINAL INVOICE':^44}\n" + "="*44)
 
             cart.display_cart(show_total=False)
@@ -66,7 +71,11 @@ def cart_management_flow():
             break
 
         elif action.endswith('r'):
-            cart.remove_item(action[:-1])
+            item_id = action[:-1]
+            if item_id in cart.items:
+                cart.remove_item(item_id)
+            else:
+                input(f"\n[!] Item ID {item_id} is not in your cart. Press Enter...")
         
         else:
             try:

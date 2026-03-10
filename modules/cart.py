@@ -4,17 +4,23 @@ class CartManager:
         self.items = {}
 
     def update_or_add(self, item_id, name, price, qty):
-        if qty <= 0:
-            self.remove_item(item_id)
-        else:
-            self.items[item_id] = {
-                'name': name, 'price': price, 'qty': qty, 'subtotal': price * qty
-            }
+        try:
+            qty = int(qty)
+            if qty <= 0:
+                self.remove_item(item_id)
+            else:
+                self.items[item_id] = {
+                    'name': name, 'price': price, 'qty': qty, 'subtotal': price * qty
+                }
+        except ValueError:
+            print("\nInvalid quantity. Please enter a whole number.")
     
     def remove_item(self, item_id):
         # Removes an item from the cart.
         if item_id in self.items:
             del self.items[item_id]
+        else:
+            print(f"Item {item_id} not in cart.")
 
     def clear_cart(self):
         # Empties the cart for a cancelled order.
